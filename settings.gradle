@@ -1,5 +1,6 @@
 rootProject.name = 'programming-in-jav'
 include 'lab00'
 include 'lab01'
+include 'lab02'
 
 
