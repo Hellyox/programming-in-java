@@ -19,6 +19,9 @@ class MyQueueDLLBImplTest {
     void tearDown() {
     }
 
+    /**
+     * We take the first value enqueued 1 and we expect it to be the first to be removed
+     */
     @Test
     void enqueue() {
         this.queueOfInts.enqueue(1);
@@ -27,6 +30,9 @@ class MyQueueDLLBImplTest {
         assertEquals(1, this.queueOfInts.dequeue());
     }
 
+    /**
+     * We insert a 3 values queue and we remove the first, we see that we have only 2 values left
+     */
     @Test
     void dequeue() {
         this.queueOfInts.enqueue(1);
@@ -36,14 +42,17 @@ class MyQueueDLLBImplTest {
         assertEquals(2,this.queueOfInts.numOfElems());
     }
 
+    /**
+     * we check if there are 3 elements
+     */
     @Test
     void numOfElems() {
         this.queueOfInts.enqueue(1);
         this.queueOfInts.enqueue(2);
         this.queueOfInts.enqueue(3);
-        this.queueOfInts.dequeue();
-        assertEquals(2,this.queueOfInts.numOfElems());
+        assertEquals(3,this.queueOfInts.numOfElems());
     }
+
 
     @Test
     void peek() {

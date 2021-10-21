@@ -19,6 +19,7 @@ class MyStackDLLBImplTest {
     void tearDown() {
     }
 
+
     @Test
     void pop() {
         this.stackOfInts.push(1);
@@ -27,6 +28,9 @@ class MyStackDLLBImplTest {
         assertEquals("DLinkList = 1;", this.stackOfInts.toString());
     }
 
+    /**
+     * we check if the values are being stacked
+     */
     @Test
     void push() {
         this.stackOfInts.push(1);
@@ -35,6 +39,10 @@ class MyStackDLLBImplTest {
 
     }
 
+    /**
+     * We expect to count 4 elements in the list
+     *
+     */
     @Test
     void numOfElems() {
         this.stackOfInts.push(1);
@@ -42,7 +50,7 @@ class MyStackDLLBImplTest {
         this.stackOfInts.push(1);
         this.stackOfInts.push(2);
         this.stackOfInts.numOfElems();
-        Assertions.assertEquals(4, this.stackOfInts.numOfElems());
+        assertEquals(4, this.stackOfInts.numOfElems());
     }
 
     @Test
@@ -50,7 +58,7 @@ class MyStackDLLBImplTest {
         this.stackOfInts.push(1);
         this.stackOfInts.push(2);
         this.stackOfInts.push(3);
-        Assertions.assertEquals(1, this.stackOfInts.peek());
+        assertEquals(1, this.stackOfInts.peek());
     }
 
 }
