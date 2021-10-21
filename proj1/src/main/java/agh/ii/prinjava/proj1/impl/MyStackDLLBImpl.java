@@ -4,25 +4,33 @@ import agh.ii.prinjava.proj1.MyStack;
 
 
 public class MyStackDLLBImpl<E> implements MyStack<E> {
-    private DLinkList<E> elems;
+    private DLinkList<E> elems = new DLinkList<>();
 
     @Override
     public E pop() {
-        throw new IllegalStateException("To be implemented");
+        return this.elems.removeLast();
     }
 
     @Override
     public void push(E x) {
-        throw new IllegalStateException("To be implemented");
+        this.elems.addLast(x);
     }
 
     @Override
     public int numOfElems() {
-        throw new IllegalStateException("To be implemented");
+        return this.elems.Count();
     }
 
     @Override
     public E peek() {
-        throw new IllegalStateException("To be implemented");
+            E first = this.elems.removeFirst();
+            this.elems.addFirst(first);
+            return first;
     }
+
+    @Override
+    public String toString() {
+        return this.elems.toString();
+    }
+
 }

@@ -1,7 +1,5 @@
 package agh.ii.prinjava.proj1.impl;
 
-import java.util.LinkedList;
-
 public class DLinkList<E> {
     private Node<E> node = null;
 
@@ -89,7 +87,7 @@ public class DLinkList<E> {
         else {
             String str = "DLinkList = ";
             Node<E> tmp = this.node;
-            while(tmp.next!=null){
+            while(tmp!=null){
                 str += tmp.getElem().toString()  +";";
                 tmp = tmp.next;
             }
@@ -97,5 +95,21 @@ public class DLinkList<E> {
         }
     }
 
+    public int Count() {
+        int ct = 0;
+        if (this.node == null) {
+            return ct;
+        }
+        else {
+            Node<E> tmp = this.node;
+            while(tmp!=null){
+                ct += 1;
+                tmp = tmp.next;
+            }
+            System.out.println(ct);
+            return ct;
+        }
+    }
 }
+
 
