@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="agh.ii.prinjava.proj2.PlayWithMoviesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-16T18:58:17" hostname="DESKTOP-VV6218V" time="0.127">
+  <properties/>
+  <testcase name="testEx07()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.127"/>
+  <system-out><![CDATA[
+Looking for the 9 actors with the most films
+[Leonardo DiCaprio=8, Harrison Ford=7, James Stewart=7, Robert De Niro=7, Tom Hanks=6, William Holden=5, Paul Newman=5, Tom Hardy=5, Cary Grant=5, Carrie Fisher=4]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
