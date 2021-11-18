@@ -3,14 +3,15 @@ package agh.ii.prinjava.proj2;
 
 import agh.ii.prinjava.proj2.dal.ImdbTop250;
 import agh.ii.prinjava.proj2.model.Movie;
+
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import static agh.ii.prinjava.proj2.utils.Utils.oneToManyByActor;
-import static agh.ii.prinjava.proj2.utils.Utils.oneToManyByDirector;
+import static agh.ii.prinjava.proj2.utils.Utils.*;
 import static java.util.stream.Collectors.*;
 import static javax.swing.UIManager.get;
 
@@ -33,7 +34,7 @@ interface PlayWithMovies {
 
     /**
      * Returns the movies (only titles) in which an actor played
-     * Exactly the same code as Ex1, as the demand is the same
+     * Exactly the same code as Ex1, as the demand is the same but with actors
      */
     static List<String> ex02(String actor) {
         System.out.println("\nSearching movies with "+actor+"...");
@@ -92,8 +93,30 @@ interface PlayWithMovies {
     /**
      * Returns the movies (only titles) made by each of the 10 directors found in {@link PlayWithMovies#ex04 ex04}
      */
-    static List<Map.Entry<String, List<String>>> ex05() {
-        throw new RuntimeException("ex05 is not implemented!");
+    static List<Map.Entry<String, List<String>>> ex05(){
+        System.out.println("\nLooking for the movies of the 10 directors with the most movies...");
+        final Optional<List<Movie>> optMovies = ImdbTop250.movies();
+        List<String> topDirectors = ex04().stream().map(Map.Entry::getKey).collect(Collectors.toList());
+        List<Map.Entry<String, List<String>>> topMovies = optMovies.orElseThrow()
+                .stream()
+                .flatMap(m -> oneToManyByDirector(m).stream())
+                .collect(Collectors.groupingBy(Movie::directors))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(e -> e.getKey().get(0), e -> e.getValue()
+                        .stream()
+                        .sorted(Comparator.comparingInt(Movie::rank))
+                        .map(Movie::title)
+                        .collect(Collectors.toList())))
+                .entrySet()
+                .stream()
+                .filter(e -> topDirectors.stream().anyMatch(entry -> entry.equals(e.getKey())))
+                .sorted((l1, l2) -> Integer.compare(l2.getValue().size(), l1.getValue().size()))
+                .collect(Collectors.toList());
+        System.out.println(topMovies);
+        return topMovies;
+
+
     }
 
     /**
@@ -140,21 +163,81 @@ interface PlayWithMovies {
      * Returns the movies (only titles) of each of the 9 actors from {@link PlayWithMovies#ex07 ex07}
      */
     static List<Map.Entry<String, List<String>>> ex08() {
-        throw new RuntimeException("ex08 is not implemented!");
+        System.out.println("\nLooking for the movies of the 9 actors with the most movies...");
+        final Optional<List<Movie>> optMovies = ImdbTop250.movies();
+        List<String> topActors = ex07().stream().map(Map.Entry::getKey).collect(Collectors.toList());
+        List<Map.Entry<String, List<String>>> topMovies = optMovies.orElseThrow()
+                .stream()
+                .flatMap(m -> oneToManyByActor(m).stream())
+                .collect(Collectors.groupingBy(Movie::actors))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(e -> e.getKey().get(0), e -> e.getValue()
+                        .stream()
+                        .sorted(Comparator.comparingInt(Movie::rank))
+                        .map(Movie::title)
+                        .collect(Collectors.toList())))
+                .entrySet()
+                .stream()
+                .filter(e -> topActors.stream().anyMatch(entry -> entry.equals(e.getKey())))
+                .sorted((l1, l2) -> Integer.compare(l2.getValue().size(), l1.getValue().size()))
+                .collect(Collectors.toList());
+        System.out.println(topMovies);
+        return topMovies;
     }
 
     /**
      * Returns the 5 most frequent actor partnerships (i.e., appearing together most often)
      */
     static List<Map.Entry<String, Long>> ex09() {
-        throw new RuntimeException("ex09 is not implemented!");
+        System.out.println("\nLooking for 5 most frequent actor partnerships...");
+        final Optional<List<Movie>> optMovies = ImdbTop250.movies();
+        List<Map.Entry<String, Long>> buddies = optMovies.orElseThrow()
+                .stream()
+                .flatMap(m -> oneToManyByActorDuo(m).stream())
+                .collect(Collectors.groupingBy(Movie::actors))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(e -> e.getKey().get(0), e -> (long) e.getValue().size()))
+                .entrySet()
+                .stream()
+                .sorted((l1,l2) -> Long.compare((l2.getValue()), l1.getValue()))
+                .limit(5)
+                .collect(Collectors.toList());
+
+        System.out.println(buddies);
+        return buddies;
+
+
+
     }
 
     /**
      * Returns the movies (only titles) of each of the 5 most frequent actor partnerships
      */
     static List<Map.Entry<String, List<String>>> ex10() {
-        throw new RuntimeException("ex10 is not implemented!");
+        System.out.println("\nLooking for 5 most frequent actor partnerships films...");
+        final Optional<List<Movie>> optMovies = ImdbTop250.movies();
+        List<Map.Entry<String, List<String>>> buddyMovie = optMovies.orElseThrow()
+                .stream()
+                .flatMap(m -> oneToManyByActorDuo(m).stream())
+                .collect(Collectors.groupingBy(Movie::actors))
+                .entrySet()
+                .stream()
+                .collect(Collectors.toMap(e -> e.getKey().get(0), e -> e.getValue()
+                        .stream()
+                        .map(Movie::title)
+                        .collect(Collectors.toList())))
+                .entrySet()
+                .stream()
+                .sorted((l1,l2) -> Integer.compare((l2.getValue().size()), l1.getValue().size()))
+                .limit(5)
+                .collect(Collectors.toList());
+
+        System.out.println(buddyMovie);
+        return buddyMovie;
+
+
     }
 }
 
