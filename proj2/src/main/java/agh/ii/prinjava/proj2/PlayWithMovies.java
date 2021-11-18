@@ -1,6 +1,5 @@
 package agh.ii.prinjava.proj2;
 
-
 import agh.ii.prinjava.proj2.dal.ImdbTop250;
 import agh.ii.prinjava.proj2.model.Movie;
 
@@ -8,12 +7,14 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-
 import static agh.ii.prinjava.proj2.utils.Utils.*;
 import static java.util.stream.Collectors.*;
-import static javax.swing.UIManager.get;
+
+/**Using the stream API the code get pretty clear, as each function explains itself with its name
+ * This Interface was pretty easy to code, as similar functions shared the same code, just needing to change director to actor
+ */
+
 
 interface PlayWithMovies {
 
@@ -25,8 +26,8 @@ interface PlayWithMovies {
         final Optional<List<Movie>> optMovies = ImdbTop250.movies();
         List<String> directorMovies = optMovies.orElseThrow().stream()
                 .filter(movie -> movie.directors().contains(director))
-                        .map(Movie::title)
-                                .collect(Collectors.toList());
+                .map(Movie::title)
+                .collect(Collectors.toList());
 
         System.out.println(directorMovies);
         return directorMovies;
@@ -85,9 +86,6 @@ interface PlayWithMovies {
                 .toList();
         System.out.println(topDirectors);
         return topDirectors;
-
-
-
     }
 
     /**
@@ -104,19 +102,18 @@ interface PlayWithMovies {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(e -> e.getKey().get(0), e -> e.getValue()
+                        //here we compare the rank of the movies to return a list in order
                         .stream()
-                        .sorted(Comparator.comparingInt(Movie::rank))
                         .map(Movie::title)
                         .collect(Collectors.toList())))
                 .entrySet()
                 .stream()
                 .filter(e -> topDirectors.stream().anyMatch(entry -> entry.equals(e.getKey())))
+                //The ex04 printed the result, so we also have an extra line printed  here
                 .sorted((l1, l2) -> Integer.compare(l2.getValue().size(), l1.getValue().size()))
                 .collect(Collectors.toList());
         System.out.println(topMovies);
         return topMovies;
-
-
     }
 
     /**
@@ -139,6 +136,7 @@ interface PlayWithMovies {
 
     /**
      * Returns the 9 actors with the most films on the list
+     * Same as Ex04
      */
     static List<Map.Entry<String, Long>> ex07() {
         System.out.println("\nLooking for the 9 actors with the most films");
@@ -153,7 +151,7 @@ interface PlayWithMovies {
                 .entrySet()
                 .stream()
                 .sorted((l1, l2) -> Long.compare(l2.getValue(), l1.getValue()))
-                .limit(10)
+                .limit(9)
                 .toList();
         System.out.println(topActors);
         return topActors;
@@ -161,11 +159,13 @@ interface PlayWithMovies {
 
     /**
      * Returns the movies (only titles) of each of the 9 actors from {@link PlayWithMovies#ex07 ex07}
+     * Same as ex05
      */
     static List<Map.Entry<String, List<String>>> ex08() {
         System.out.println("\nLooking for the movies of the 9 actors with the most movies...");
         final Optional<List<Movie>> optMovies = ImdbTop250.movies();
         List<String> topActors = ex07().stream().map(Map.Entry::getKey).collect(Collectors.toList());
+        //We re-use the previous exercise to already get the actors
         List<Map.Entry<String, List<String>>> topMovies = optMovies.orElseThrow()
                 .stream()
                 .flatMap(m -> oneToManyByActor(m).stream())
@@ -173,13 +173,14 @@ interface PlayWithMovies {
                 .entrySet()
                 .stream()
                 .collect(Collectors.toMap(e -> e.getKey().get(0), e -> e.getValue()
+                        //here we compare the rank of the movies to return a list in order
                         .stream()
-                        .sorted(Comparator.comparingInt(Movie::rank))
                         .map(Movie::title)
                         .collect(Collectors.toList())))
                 .entrySet()
                 .stream()
                 .filter(e -> topActors.stream().anyMatch(entry -> entry.equals(e.getKey())))
+                //The ex07 printed the result, so we also have an extra line printed  here
                 .sorted((l1, l2) -> Integer.compare(l2.getValue().size(), l1.getValue().size()))
                 .collect(Collectors.toList());
         System.out.println(topMovies);
@@ -207,9 +208,6 @@ interface PlayWithMovies {
 
         System.out.println(buddies);
         return buddies;
-
-
-
     }
 
     /**
@@ -236,8 +234,6 @@ interface PlayWithMovies {
 
         System.out.println(buddyMovie);
         return buddyMovie;
-
-
     }
 }
 

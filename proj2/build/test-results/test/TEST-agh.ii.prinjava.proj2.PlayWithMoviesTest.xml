@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ii.prinjava.proj2.PlayWithMoviesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-16T18:58:17" hostname="DESKTOP-VV6218V" time="0.127">
+<testsuite name="agh.ii.prinjava.proj2.PlayWithMoviesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-11-18T21:11:00" hostname="DESKTOP-VV6218V" time="0.137">
   <properties/>
-  <testcase name="testEx07()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.127"/>
+  <testcase name="testEx05()" classname="agh.ii.prinjava.proj2.PlayWithMoviesTest" time="0.137"/>
   <system-out><![CDATA[
-Looking for the 9 actors with the most films
-[Leonardo DiCaprio=8, Harrison Ford=7, James Stewart=7, Robert De Niro=7, Tom Hanks=6, William Holden=5, Paul Newman=5, Tom Hardy=5, Cary Grant=5, Carrie Fisher=4]
+Looking for the movies of the 10 directors with the most movies...
+
+Looking for the 10 directors with the most films
+[Alfred Hitchcock=9, Stanley Kubrick=8, Martin Scorsese=7, Steven Spielberg=7, Christopher Nolan=7, Billy Wilder=7, Quentin Tarantino=6, Charles Chaplin=5, Ridley Scott=4, Frank Capra=4]
+[Alfred Hitchcock=[Psycho, Rear Window, North by Northwest, Vertigo, Dial M for Murder, Rebecca, Strangers on a Train, Notorious, Rope], Stanley Kubrick=[Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb, Paths of Glory, The Shining, A Clockwork Orange, 2001: A Space Odyssey, Full Metal Jacket, Barry Lyndon, The Killing], Martin Scorsese=[Goodfellas, The Departed, Taxi Driver, Raging Bull, Casino, The Wolf of Wall Street, Shutter Island], Steven Spielberg=[Schindler's List, Saving Private Ryan, Raiders of the Lost Ark, Indiana Jones and the Last Crusade, Jurassic Park, Catch Me If You Can, Jaws], Christopher Nolan=[The Dark Knight, Inception, Interstellar, The Prestige, Memento, The Dark Knight Rises, Batman Begins], Billy Wilder=[Sunset Boulevard, Witness for the Prosecution, Double Indemnity, The Apartment, Some Like It Hot, Stalag 17, The Lost Weekend], Quentin Tarantino=[Pulp Fiction, Django Unchained, Reservoir Dogs, Inglourious Basterds, Kill Bill: Vol. 1, Sin City], Charles Chaplin=[City Lights, Modern Times, The Great Dictator, The Kid, The Gold Rush], Ridley Scott=[Gladiator, Alien, Blade Runner, The Martian], Frank Capra=[It's a Wonderful Life, Mr. Smith Goes to Washington, It Happened One Night, Arsenic and Old Lace]]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
