@@ -109,9 +109,9 @@ class D8 extends B4 {
  * Exercise: draw the class diagram for D9 and explain the sequence of constructor calls
  */
 class D9 extends D1 {
-    private D1 d1;
-    private D4 d4;
-    private D7 d7 = new D7();
+    private final D1 d1;
+    private final D4 d4;
+    private final D7 d7 = new D7();
 
     {
         d4 = new D4();

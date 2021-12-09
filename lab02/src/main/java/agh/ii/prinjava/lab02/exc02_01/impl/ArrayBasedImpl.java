@@ -24,5 +24,5 @@ public class ArrayBasedImpl implements StackOfInts {
         throw new IllegalStateException("To be implemented");
     }
 
-    private int numOfElems = 0;
+    private final int numOfElems = 0;
 }

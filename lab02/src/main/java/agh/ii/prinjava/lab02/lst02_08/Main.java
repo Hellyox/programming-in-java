@@ -11,7 +11,7 @@ class C6 {
  * (interfaces, as contracts, should be used instead -> loose coupling)
  */
 class C7 {
-    private C6 c6 = new C6(); // (very) tight coupling
+    private final C6 c6 = new C6(); // (very) tight coupling
 
     void doC7Stuff() {
         System.out.println("C7.doStuff");
@@ -48,7 +48,7 @@ class C8Impl3 implements IC8 {
 }
 
 class C9 {
-    private IC8 ic8; // IC8 as the contract
+    private final IC8 ic8; // IC8 as the contract
 
     void doC9Stuff() {
         System.out.println("C9.doStuff");

@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Objects;
 
 class C1 {
-    private int i;
-    private long l;
-    private String s;
+    private final int i;
+    private final long l;
+    private final String s;
 
     public C1(int i, long l, String s) {
         this.i = i;

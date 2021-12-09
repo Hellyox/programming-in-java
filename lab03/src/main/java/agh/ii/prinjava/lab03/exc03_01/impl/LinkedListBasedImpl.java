@@ -36,8 +36,8 @@ public class LinkedListBasedImpl implements QueueOfInts {
         }
     }
 
-    private Node first = null;
-    private Node last = null;
+    private final Node first = null;
+    private final Node last = null;
 
-    private int numOfElems = 0;
+    private final int numOfElems = 0;
 }

@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 class NonSerializableClass1 {
-    private String name;
+    private final String name;
 
     public NonSerializableClass1(String name) {
         this.name = name;
@@ -31,7 +31,7 @@ class NonSerializableClass1 {
  * that the class is able to be persisted
  */
 class SerializableCls1 implements Serializable {
-    private String name;
+    private final String name;
 
     public SerializableCls1(String name) {
         this.name = name;
@@ -51,8 +51,8 @@ class SerializableCls1 implements Serializable {
  * it might be better to drop the cache and recompute it instead of storing it.
  */
 class SerializableCls2 implements Serializable {
-    private String name;
-    private transient int age; // <- a transient field, this will not be serialized (because it's not needed)
+    private final String name;
+    private final transient int age; // <- a transient field, this will not be serialized (because it's not needed)
 
     public SerializableCls2(String name, int age) {
         this.name = name;
@@ -69,8 +69,8 @@ class SerializableCls2 implements Serializable {
  * Not serializable because of a non-serializable field (nsc)
  */
 class NonSerializableCls2 implements Serializable {
-    private String name;
-    private NonSerializableClass1 nsc; // <- a field of non-serializable type
+    private final String name;
+    private final NonSerializableClass1 nsc; // <- a field of non-serializable type
 
     public NonSerializableCls2(String name, NonSerializableClass1 nsc) {
         this.name = name;
@@ -84,8 +84,8 @@ class NonSerializableCls2 implements Serializable {
 }
 
 class SerializableCls3 implements Serializable {
-    private String name;
-    private transient NonSerializableClass1 nsc; // <- since it's not serializable, it must be transient
+    private final String name;
+    private final transient NonSerializableClass1 nsc; // <- since it's not serializable, it must be transient
 
     public SerializableCls3(String name, NonSerializableClass1 nsc) {
         this.name = name;

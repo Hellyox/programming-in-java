@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class RichDad {
-    private String name;
-    private List<String> contacts;
+    private final String name;
+    private final List<String> contacts;
     protected BigDecimal fortune;
 
     // Note that in general protected fields are not welcome, but this is just a toy example...

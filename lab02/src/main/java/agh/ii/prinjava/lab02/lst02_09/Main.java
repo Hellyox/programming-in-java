@@ -49,7 +49,7 @@ final class I31Factory {
  * I31 (service) consumer
  */
 class C33 {
-    private I31 i31; // Loosely coupling
+    private final I31 i31; // Loosely coupling
 
     public C33(I31 i31) {
         this.i31 = i31;
@@ -107,7 +107,7 @@ class I41Impl2 implements I41 {
  * I41 (service) consumer
  */
 class C41 {
-    private I41 i41;
+    private final I41 i41;
 
     public C41(I41 i41) {
         this.i41 = i41;

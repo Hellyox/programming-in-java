@@ -30,7 +30,7 @@ abstract class Shape {
 }
 
 class Circle extends Shape {
-    private double r;
+    private final double r;
 
     @Override
     double area() {

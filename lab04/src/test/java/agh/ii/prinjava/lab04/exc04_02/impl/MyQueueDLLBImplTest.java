@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MyQueueDLLBImplTest {
 
-    MyQueue<Integer> queueOfInts = MyQueue.<Integer>create();
+    MyQueue<Integer> queueOfInts = MyQueue.create();
 
     @BeforeEach
     void setUp() {

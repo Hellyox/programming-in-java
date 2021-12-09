@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MyStackDLLBImplTest {
 
-    MyStack<Integer> stackOfInts = MyStack.<Integer>create();
+    MyStack<Integer> stackOfInts = MyStack.create();
 
     @BeforeEach
     void setUp() {

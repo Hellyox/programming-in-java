@@ -4,7 +4,7 @@ import agh.ii.prinjava.proj1.MyStack;
 
 
 public class MyStackDLLBImpl<E> implements MyStack<E> {
-    private DLinkList<E> elems = new DLinkList<>();
+    private final DLinkList<E> elems = new DLinkList<>();
 
     /**
      * removes the top of the stack(newest element in the stack)

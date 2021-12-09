@@ -1,8 +1,8 @@
 package agh.ii.prinjava.lab01.lst01_03;
 
 public class Rectangle extends Shape {
-    private double w;
-    private double h;
+    private final double w;
+    private final double h;
 
     @Override
     public double area() {

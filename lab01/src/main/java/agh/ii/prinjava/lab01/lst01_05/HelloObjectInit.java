@@ -58,7 +58,7 @@ public class HelloObjectInit {
         System.out.println("Anonymous block (2), S_CONST1 = " + S_CONST1 + ", CONST1 = " + CONST1);
     }
 
-    private double pfd1;
+    private final double pfd1;
 
     public static final double S_CONST2; // <-- despite being final it may be also initialised in the static block
 

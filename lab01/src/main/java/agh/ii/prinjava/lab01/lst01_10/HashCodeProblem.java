@@ -3,8 +3,8 @@ package agh.ii.prinjava.lab01.lst01_10;
 import java.util.Objects;
 
 public class HashCodeProblem {
-    private String s1;
-    private String s2;
+    private final String s1;
+    private final String s2;
 
     public HashCodeProblem(String s1, String s2) {
         this.s1 = s1;

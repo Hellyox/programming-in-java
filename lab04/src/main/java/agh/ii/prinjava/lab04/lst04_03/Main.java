@@ -28,8 +28,8 @@ public class Main {
         String[] strings = {"Neo", "Trinity", "Morpheus"};
 
         // To invoke a generic method, prefix the method name with the actual type in angle brackets
-        Main.<Integer>print(integers);
-        Main.<String>print(strings);
+        Main.print(integers);
+        Main.print(strings);
         System.out.println("-----");
 
         print(integers); // the type of E is inferred

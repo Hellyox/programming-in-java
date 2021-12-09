@@ -11,8 +11,8 @@ package agh.ii.prinjava.lab02.lst02_07;
  *     <li>Modifier 'public' is redundant for interface methods</li>
  * </ul>
  */
-abstract interface I1 {
-    public abstract void m1();
+interface I1 {
+    void m1();
 }
 
 interface I2 { // it is still abstract
@@ -62,7 +62,7 @@ interface I3 {
     // static { int x4 = 5; } // static blocks are not allowed in interfaces<
     // int x1; // it's final, so it must be initialised
 
-    public static final int x2 = 3; // "public static final" is redundant
+    int x2 = 3; // "public static final" is redundant
     int x3 = 5; // it is still "public static final"
 
     void m1(); // it is still public abstract
@@ -76,7 +76,7 @@ interface I3 {
  * </ul>
  */
 interface I4 {
-    public default void m1() { // <- Modifier 'public' is redundant for interface methods
+    default void m1() { // <- Modifier 'public' is redundant for interface methods
         System.out.println("I4.m1()");
     } // public is redundant
 

@@ -13,7 +13,7 @@ package agh.ii.prinjava.lab01.lst01_07;
  * </p>
  */
 public class HelloFactoryMeth {
-    private int x;
+    private final int x;
 
     /**
      * all constructors are private

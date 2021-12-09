@@ -12,8 +12,8 @@ import java.util.Arrays;
  * @see <a href="https://github.com/AdoptOpenJDK/openjdk-jdk16/blob/master/src/java.base/share/classes/java/lang/Object.java">Object</a>
  */
 class ShalowCloner implements Cloneable {
-    private int x = 10;
-    private int[] ints = {1, 2, 3, 4, 5};
+    private final int x = 10;
+    private final int[] ints = {1, 2, 3, 4, 5};
 
     public void setIntAtIdx(int idx, int val) {
         ints[idx] = val;
@@ -39,7 +39,7 @@ class ShalowCloner implements Cloneable {
  * @see <a href="https://en.wikipedia.org/wiki/Object_copying">Object copying</a>
  */
 class DeepCloner implements Cloneable {
-    private int x = 10;
+    private final int x = 10;
     private int[] ints = {1, 2, 3, 4, 5};
 
     public void setIntAtIdx(int idx, int val) {

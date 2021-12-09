@@ -1,7 +1,7 @@
 package agh.ii.prinjava.lab01.lst01_03;
 
 public class Circle extends Shape {
-    private double r;
+    private final double r;
 
     @Override
     public double area() {

@@ -21,7 +21,7 @@ package agh.ii.prinjava.lab01.lst01_04;
  * </ul>
  */
 public class HelloStatic {
-    private int instanceVar;
+    private final int instanceVar;
     /**
      * may be initialized this way (or in a constructor, e.g., {@linkplain  #HelloStatic(double)})
      */
