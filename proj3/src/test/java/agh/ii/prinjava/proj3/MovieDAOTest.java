@@ -1,16 +1,14 @@
-package agh.ii.prinjava.proj3;
+package agh.ii.prinjava.proj3.dal;
+
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-
-import static org.assertj.core.api.Assertions.*;
 
 class MovieDAOTest {
 
     private static final String dbURL = "jdbc:sqlite:datasources/imdb_top250.db";
-    agh.ii.prinjava.proj3.MovieDAO movieDAO = new MovieDAO(dbURL);
+    MovieDAO movieDAO = new MovieDAO(dbURL);
 
     @Test
     void moviesDirectedBy() {
@@ -42,8 +40,6 @@ class MovieDAOTest {
 
     @Test
     void numberOfMoviesPerDirector() {
-        //TODO complete the test of ex03
-
         // We can check if the entry is present in the map or...
         assertThat(movieDAO.numberOfMoviesPerDirector().orElseThrow())
                 .contains(Map.entry("David Fincher", 3L));
@@ -55,19 +51,17 @@ class MovieDAOTest {
 
     @Test
     void numberOfMoviesPerTop10Director() {
-        //TODO complete the test of ex04
         /*
         containsExactlyEntriesOf Verifies that the actual map contains only the entries of the given map
-        and nothing else, in order. This should be used with TreeMap. HashMap will not guarantee order
-        and your test will randomly fail.
-        If we use this, it will be too long because we can't use Map.of so we would have to create a new LinkedHashMap
+        and nothing else, in order.
+        If we use this, it will be too long because we can't use Map.of, so we would have to create a new LinkedHashMap
         and put what we want to test one by one. Check the sequence of the entries is faster and check the same thing.
 
         containsExactlyInAnyOrderEntriesOf Verifies that the actual map contains only the given entries
-        and nothing else, in any order. This will work with HashMap.
-         */
+        and nothing else, in any order.
+        */
         assertThat(movieDAO.numberOfMoviesPerTop10Director().orElseThrow())
-                .containsExactly(Map.entry("Alfred Hitchcock" ,9L),
+                .containsExactly(Map.entry("Alfred Hitchcock", 9L),
                         Map.entry("Stanley Kubrick", 8L),
                         Map.entry("Steven Spielberg", 7L),
                         Map.entry("Martin Scorsese", 7L),
@@ -82,7 +76,6 @@ class MovieDAOTest {
 
     @Test
     void moviesPerTop10Director() {
-        //TODO complete the test of ex05
         // We need to test the order of the key first, then if each key contains all the value as expected
         assertThat(movieDAO.moviesPerTop10Director().orElseThrow().keySet())
                 .containsExactly("Alfred Hitchcock",
@@ -120,8 +113,6 @@ class MovieDAOTest {
 
     @Test
     void numberOfMoviesPerActor() {
-        //TODO complete the test of ex06
-
         // Like in ex03 we can either check for a single entry or be quicker and check many entries
         assertThat(movieDAO.numberOfMoviesPerActor().orElseThrow())
                 .contains(Map.entry("Leonardo DiCaprio", 8L));
@@ -135,7 +126,6 @@ class MovieDAOTest {
 
     @Test
     void numberOfMoviesPerTop9Actor() {
-        //TODO complete the test of ex07
         assertThat(movieDAO.numberOfMoviesPerTop9Actor().orElseThrow())
                 .containsExactly(Map.entry("Leonardo DiCaprio", 8L),
                         Map.entry("Robert De Niro", 7L),
@@ -150,7 +140,6 @@ class MovieDAOTest {
 
     @Test
     void moviesPerTop9Actor() {
-        //TODO complete the test of ex08
         // the DataBase is sorted by alphabetic order for actors with same numbers of movies
         assertThat(movieDAO.moviesPerTop9Actor().orElseThrow().keySet())
                 .containsExactly("Leonardo DiCaprio",
@@ -183,7 +172,6 @@ class MovieDAOTest {
 
     @Test
     void top5FrequentActorPartnerships() {
-        //TODO complete the test of ex09
         assertThat(movieDAO.top5FrequentActorPartnerships().orElseThrow())
                 .containsExactly(Map.entry("Carrie Fisher, Harrison Ford", 4L), // 'Exactly' because it's a ranking
                         Map.entry("Carrie Fisher, Mark Hamill", 4L),
@@ -194,7 +182,6 @@ class MovieDAOTest {
 
     @Test
     void moviesPerTop5ActorPartnerships() {
-        //TODO complete the test of ex10
         // We need to test the order of the key first, then if each key contains all the value as expected
         assertThat(movieDAO.moviesPerTop5ActorPartnerships().orElseThrow().keySet())
                 .containsExactly("Carrie Fisher, Harrison Ford",

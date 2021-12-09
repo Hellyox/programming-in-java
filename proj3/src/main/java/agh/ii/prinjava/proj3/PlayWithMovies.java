@@ -1,6 +1,6 @@
 package agh.ii.prinjava.proj3;
 
-import agh.ii.prinjava.proj3.MovieDAO;
+import agh.ii.prinjava.proj3.dal.MovieDAO;
 
 public class PlayWithMovies {
     private static final String dbURL = "jdbc:sqlite:proj3/datasources/imdb_top250.db";
